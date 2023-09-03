@@ -11,7 +11,6 @@ class GitHubRepository(
 ) {
 
     fun getRepositoryFromUser(username: String): List<UserRepositoryDto>? {
-
         return try {
             webClient.get()
                 .uri("/users/{username}/repos", username)

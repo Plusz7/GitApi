@@ -27,6 +27,5 @@ class TestUtility {
                 true
             )
         )
-
     }
 }

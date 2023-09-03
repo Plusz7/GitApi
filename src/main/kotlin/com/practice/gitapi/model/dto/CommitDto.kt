@@ -1,6 +1,6 @@
 package com.practice.gitapi.model.dto
 
-class CommitDto (
+class CommitDto(
     val sha: String,
     val url: String
 )

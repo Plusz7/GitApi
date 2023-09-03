@@ -10,7 +10,7 @@ import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 @ControllerAdvice
-class ExceptionHandler: ResponseEntityExceptionHandler() {
+class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(NotAcceptableException::class)
     fun handleNotAcceptableException(
@@ -26,8 +26,6 @@ class ExceptionHandler: ResponseEntityExceptionHandler() {
         }
         return ResponseEntity(body, headers, HttpStatus.NOT_ACCEPTABLE)
     }
-
-
 }
 
-class NotAcceptableException: RuntimeException()
+class NotAcceptableException : RuntimeException()
