@@ -8,9 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient
 class WebClientConfig {
 
     @Bean
-    fun webClient(): WebClient {
+    fun webClientBuilder(): WebClient.Builder {
         return WebClient.builder()
-            .baseUrl("https://api.github.com/")
-            .build()
     }
 }
