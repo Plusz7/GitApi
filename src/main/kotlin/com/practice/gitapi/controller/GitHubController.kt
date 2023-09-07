@@ -26,19 +26,21 @@ class GitHubController(
         }
         val repositories = getGitHubService.getRepositoryFromUser(username)
         return if (repositories.isEmpty()) {
-            ResponseEntity(ApiResponse(
-                status = HttpStatus.NOT_FOUND.value(),
-                message = "User not found",
-                data = null
-            ),
+            ResponseEntity(
+                ApiResponse(
+                    status = HttpStatus.NOT_FOUND.value(),
+                    message = "User not found",
+                    data = null
+                ),
                 HttpStatus.NOT_FOUND
             )
         } else {
-            ResponseEntity( ApiResponse(
-                status = HttpStatus.OK.value(),
-                message = "Success",
-                data = repositories
-            ),
+            ResponseEntity(
+                ApiResponse(
+                    status = HttpStatus.OK.value(),
+                    message = "Success",
+                    data = repositories
+                ),
                 HttpStatus.OK
             )
         }

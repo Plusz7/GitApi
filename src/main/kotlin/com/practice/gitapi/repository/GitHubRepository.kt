@@ -2,18 +2,14 @@ package com.practice.gitapi.repository
 
 import com.practice.gitapi.model.dto.BranchDto
 import com.practice.gitapi.model.dto.UserRepositoryDto
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
 @Repository
 class GitHubRepository(
-    @Autowired
-    private val webClientBuilder: WebClient.Builder
+    private val webClient: WebClient
 ) {
-
-    private val webClient: WebClient = webClientBuilder.baseUrl("https://api.github.com/").build()
 
     fun getRepositoryFromUser(username: String): List<UserRepositoryDto> {
         return webClient.get()
