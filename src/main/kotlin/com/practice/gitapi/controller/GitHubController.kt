@@ -4,6 +4,7 @@ import com.practice.gitapi.exception.NotAcceptableException
 import com.practice.gitapi.model.response.api.ApiResponse
 import com.practice.gitapi.service.GetGitHubService
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestHeader
@@ -19,22 +20,26 @@ class GitHubController(
     fun getUserRepositories(
         @PathVariable username: String,
         @RequestHeader("Accept") acceptHeader: String
-    ): ApiResponse {
+    ): ResponseEntity<ApiResponse> {
         if (acceptHeader != "application/json") {
             throw NotAcceptableException()
         }
         val repositories = getGitHubService.getRepositoryFromUser(username)
         return if (repositories.isEmpty()) {
-            ApiResponse(
+            ResponseEntity(ApiResponse(
                 status = HttpStatus.NOT_FOUND.value(),
                 message = "User not found",
                 data = null
+            ),
+                HttpStatus.NOT_FOUND
             )
         } else {
-            ApiResponse(
+            ResponseEntity( ApiResponse(
                 status = HttpStatus.OK.value(),
                 message = "Success",
                 data = repositories
+            ),
+                HttpStatus.OK
             )
         }
     }
