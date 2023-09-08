@@ -12,7 +12,7 @@ class GetGitHubService(
 
     fun getRepositoryFromUser(username: String): List<UserRepositoryResponse> {
         val listOfReposByUser = githubRepository.getRepositoryFromUser(username)
-        if (listOfReposByUser.isEmpty()) return emptyList()
+        if (listOfReposByUser!!.isEmpty()) return emptyList()
 
         return listOfReposByUser.map {
             val repositoryName = it.name

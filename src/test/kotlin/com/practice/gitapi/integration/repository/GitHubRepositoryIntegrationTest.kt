@@ -62,7 +62,12 @@ class GitHubRepositoryIntegrationTest {
 
     @BeforeEach
     fun setup() {
-        mockWebServer.enqueue(MockResponse().setBody(GET_BODY_REPONSE).setResponseCode(200))
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(200)
+                .setHeader("Content-Type", "application/json")
+                .setBody(GET_BODY_REPONSE)
+        )
     }
 
     @AfterEach
@@ -72,6 +77,7 @@ class GitHubRepositoryIntegrationTest {
 
     @Test
     fun fetchUserRepos_ShouldReturnCorrectRepos() {
+
         val repos = gitHubRepository.getRepositoryFromUser("User1")
 
         assertThat(repos).isNotNull()

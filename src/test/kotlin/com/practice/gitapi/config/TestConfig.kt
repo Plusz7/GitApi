@@ -17,6 +17,8 @@ class TestConfig {
     @Profile("test")
     @Bean(name = ["testWebClient"])
     fun webClientMock(mockWebServer: MockWebServer): WebClient {
-        return WebClient.builder().baseUrl("http://${mockWebServer.hostName}:${mockWebServer.port}").build()
+        return WebClient.builder()
+            .baseUrl(mockWebServer.url("/").toString())
+            .build()
     }
 }
