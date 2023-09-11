@@ -77,7 +77,6 @@ class GitHubRepositoryIntegrationTest {
 
     @Test
     fun fetchUserRepos_ShouldReturnCorrectRepos() {
-
         val repos = gitHubRepository.getRepositoryFromUser("User1")
 
         assertThat(repos).isNotNull()
