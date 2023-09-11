@@ -1,6 +1,6 @@
 # GitApi
 
-Api creates a GET request to GitHub api to look for repositories from a given user.
+Api creates a GET request to GitHub api to look for repositories and last commit on a branch from a given user.
 
 Tech stack:
 
