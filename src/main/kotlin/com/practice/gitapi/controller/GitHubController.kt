@@ -19,11 +19,9 @@ class GitHubController(
     @GetMapping("/user/{username}/repos")
     fun getUserRepositories(
         @PathVariable username: String,
-        @RequestHeader("Accept") acceptHeader: String
+        @RequestHeader("Accept") acceptHeader: String,
+        @RequestHeader("Content-Type") contentType: String
     ): ResponseEntity<ApiResponse> {
-        if (acceptHeader != "application/json") {
-            throw NotAcceptableException()
-        }
         val repositories = getGitHubService.getRepositoryFromUser(username)
         return if (repositories.isEmpty()) {
             ResponseEntity(
