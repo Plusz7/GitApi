@@ -19,9 +19,9 @@ class TestConfig {
     @Bean(name = ["testWebClient"])
     fun webClientMock(mockWebServer: MockWebServer): WebClient {
         return WebClient.builder()
-                .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-                .defaultHeader("Accept", MediaType.APPLICATION_JSON_VALUE)
-                .baseUrl(mockWebServer.url("/").toString())
-                .build()
+            .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+            .defaultHeader("Accept", MediaType.APPLICATION_JSON_VALUE)
+            .baseUrl(mockWebServer.url("/").toString())
+            .build()
     }
 }

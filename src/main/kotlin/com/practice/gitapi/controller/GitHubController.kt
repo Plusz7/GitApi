@@ -1,6 +1,5 @@
 package com.practice.gitapi.controller
 
-import com.practice.gitapi.exception.NotAcceptableException
 import com.practice.gitapi.model.response.api.ApiResponse
 import com.practice.gitapi.service.GetGitHubService
 import org.springframework.http.HttpStatus
